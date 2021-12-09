@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">GreenFlag</string>
+    <string name="password_requirements_text">Your password should have a minimum of 8 characters and contain at least one number, one uppercase and one lowercase letter. You can use special characters.</string>
+    <string name="Email_error_string">An account already exists for this email address</string>
+    <string name="password_match_error">Your passwords don\'t match</string>
+    <string name="password_invalid_error">One of the passwords you entered wasn\'t valid</string>
+    <string name="notEmail_error">The email you entered is not a valid email address</string>
+    <string name="First_ativity">GreenFlag customers can create an account to access</string>
+
+</resources>
