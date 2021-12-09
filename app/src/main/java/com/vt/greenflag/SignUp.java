@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -83,9 +82,9 @@ public class SignUp extends AppCompatActivity {
             }else if(!hasFocus && email_editText.getText().length() != 0 && db.checkemail(email_editText.getText().toString()) && isValidEmail(email_editText.getText().toString())){
                 emailError_textView.setVisibility(View.GONE);
                 emailPassed = true;
-                //trebuie sa adaug logica pt check mark si culoare
             }
 
+            // If you came back to change the email will check to see if it is available and a valid email address
             if(hasFocus && email_editText.getText().toString().length()!=0){
                 email_editText.addTextChangedListener(new TextWatcher() {
                     @Override
@@ -115,12 +114,9 @@ public class SignUp extends AppCompatActivity {
                             emailPassed = true;
                             if(passwordPassed) nextButton.setEnabled(true);
                         }
-
                     }
                 });
             }
-
-
         });
 
         // checks if password meets requirements
@@ -133,9 +129,9 @@ public class SignUp extends AppCompatActivity {
             }else if(!hasFocus && passwordCheck(passw_editText.getText().toString())){
                 passwordError_textView.setVisibility(View.GONE);
                 passwordPassed = true;
-
             }
 
+            //If you come back to change the password this will check if it's good or not
             if(hasFocus && passw_editText.getText().toString().length()!=0) {
                 passw_editText.addTextChangedListener(new TextWatcher() {
                     @Override
@@ -155,13 +151,11 @@ public class SignUp extends AppCompatActivity {
                             passwordError_textView.setVisibility(View.VISIBLE);
                             nextButton.setEnabled(false);
                             passwordPassed = false;
-                            //Toast.makeText(getBaseContext(), "1" +" "+ s + " " + passwCheck_editText.getText().toString(), Toast.LENGTH_SHORT).show();
                         } else if (!s.toString().equals(passwCheck_editText.getText().toString()) ) {
                             passwordError_textView.setText(R.string.password_match_error);
                             passwordError_textView.setVisibility(View.VISIBLE);
                             nextButton.setEnabled(false);
                             passwordPassed = false;
-                            Toast.makeText(getBaseContext(), "2" + " " + s + " " + passwCheck_editText.getText().toString(), Toast.LENGTH_SHORT).show();
                         } else if (passwordCheck(s) && s.toString().equals(passwCheck_editText.getText().toString())) {
                             passwordError_textView.setVisibility(View.GONE);
                             passwordPassed = true;
@@ -195,10 +189,7 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
-
-
-        // register user
-
+        // register user in database
         nextButton.setOnClickListener(v ->
                 db.insert(email_editText.getText().toString(), passw_editText.getText().toString()));
 
@@ -218,9 +209,4 @@ public class SignUp extends AppCompatActivity {
     public static boolean passwordCheck(CharSequence pass){
         return PASSWORD_PATERN.matcher(pass).matches();
     }
-
-//    public static boolean passwordMatch(CharSequence pass1, CharSequence pass2){
-//        return pass1.equals(pass2);
-//    }
-
 }
