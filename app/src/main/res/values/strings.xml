@@ -6,5 +6,16 @@
     <string name="password_invalid_error">One of the passwords you entered wasn\'t valid</string>
     <string name="notEmail_error">The email you entered is not a valid email address</string>
     <string name="First_ativity">GreenFlag customers can create an account to access</string>
+    <string name="car_health_updates">Car health updates</string>
+    <string name="recuest_a_rescue_online">Recuest a rescue online</string>
+    <string name="policy_information">Policy information</string>
+    <string name="todo">TODO</string>
+    <string name="create_an_account">Create an account</string>
+    <string name="email_address">Email address</string>
+    <string name="create_password">Create Password</string>
+    <string name="see_criteria_bellow">See criteria bellow</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="next">Next</string>
+    <string name="logo">logo</string>
 
 </resources>

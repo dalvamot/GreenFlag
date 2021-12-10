@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     tools:context=".MainActivity"
     android:orientation="vertical">
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#000000">
 
         <ImageButton
             android:id="@+id/back_Button"
@@ -18,14 +20,18 @@
             android:layout_height="42dp"
             android:layout_gravity="center|start"
             android:background="@android:color/transparent"
-            android:foreground="@drawable/back_arrow_foreground" />
+            android:foreground="@drawable/back_arrow_foreground"
+            android:contentDescription="@string/todo" />
 
         <TextView
             android:id="@+id/title_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Create an account"/>
+            android:fontFamily="@font/museosans_500"
+            android:text="@string/create_an_account"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
@@ -33,104 +39,148 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email address"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginTop="25dp"/>
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/museosans_300"
+        android:text="@string/email_address"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp" />
 
     <EditText
         android:id="@+id/email_editText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginBottom="15dp"
         android:layout_weight="1"
+        android:background="#FFFFFF"
         android:ems="10"
-        android:gravity="bottom"
-        android:inputType="textPersonName" />
+        android:fontFamily="@font/museosans_300"
+        android:inputType="textEmailAddress"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:textAlignment="viewStart"
+        android:textSize="20sp"
+        android:importantForAutofill="no"
+        tools:ignore="LabelFor" />
 
     <TextView
         android:id="@+id/emailError_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text=""
+        android:fontFamily="@font/museosans_300"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
         android:visibility="gone"
         android:layout_weight="1"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"/>
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"/>
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=" Create Password"
-
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"/>
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/museosans_300"
+        android:text="@string/create_password"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp" />
 
     <EditText
         android:id="@+id/password_editText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginBottom="15dp"
         android:layout_weight="1"
+        android:background="#FFFFFF"
         android:ems="10"
-        android:gravity="bottom"
-        android:hint="See criteria bellow"
-        android:inputType="textPassword" />
+        android:fontFamily="@font/museosans_300"
+        android:hint="@string/see_criteria_bellow"
+        android:inputType="textPassword"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Repeat password"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"/>
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:fontFamily="@font/museosans_300"
+        android:text="@string/repeat_password"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp" />
 
     <EditText
         android:id="@+id/confirmPassword_editText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginBottom="15dp"
         android:layout_weight="1"
+        android:background="#FFFFFF"
         android:ems="10"
-        android:gravity="bottom"
-        android:inputType="textPassword" />
+        android:fontFamily="@font/museosans_300"
+        android:inputType="textPassword"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:textAlignment="viewStart"
+        android:textSize="20sp"
+        android:autofillHints="" />
 
     <TextView
         android:id="@+id/passwordError_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text=""
+        android:fontFamily="@font/museosans_300"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
         android:visibility="gone"
         android:layout_weight="1"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"/>
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"/>
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_weight="1"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_weight="2"
         android:fontFamily="@font/museosans_300"
         android:gravity="fill_vertical"
         android:text="@string/password_requirements_text"
-        android:textSize="20sp" />
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/next_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="40dp"
         android:layout_weight="1"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_marginBottom="25dp"
-        android:text="Next" />
+        android:background="@drawable/gradient_button_background"
+        android:fontFamily="@font/museosans_500"
+        android:text="@string/next"
+        android:textAllCaps="false"
+        android:textSize="20sp" />
 </LinearLayout>
