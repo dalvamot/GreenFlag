@@ -81,6 +81,7 @@ public class SignUp extends AppCompatActivity {
 
             }else if(!hasFocus && email_editText.getText().length() != 0 && db.checkemail(email_editText.getText().toString()) && isValidEmail(email_editText.getText().toString())){
                 emailError_textView.setVisibility(View.GONE);
+                email_editText.setBackgroundResource(R.drawable.green_border);
                 emailPassed = true;
             }
 
