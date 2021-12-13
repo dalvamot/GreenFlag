@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -70,22 +71,27 @@ public class SignUp extends AppCompatActivity {
             if(!hasFocus && email_editText.getText().length() != 0 && !isValidEmail(email_editText.getText().toString())){
                 emailError_textView.setText(R.string.notEmail_error);
                 emailError_textView.setVisibility(View.VISIBLE);
+                email_editText.setBackgroundResource(R.drawable.red_border_et);
+                email_editText.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,0,0);
                 nextButton.setEnabled(false);
                 emailPassed = false;
 
             }else if(!hasFocus && email_editText.getText().length() != 0 && !db.checkemail(email_editText.getText().toString())){
                 emailError_textView.setText(R.string.Email_error_string);
                 emailError_textView.setVisibility(View.VISIBLE);
+                email_editText.setBackgroundResource(R.drawable.red_border_et);
+                email_editText.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,0,0);
                 nextButton.setEnabled(false);
                 emailPassed = false;
 
             }else if(!hasFocus && email_editText.getText().length() != 0 && db.checkemail(email_editText.getText().toString()) && isValidEmail(email_editText.getText().toString())){
                 emailError_textView.setVisibility(View.GONE);
                 email_editText.setBackgroundResource(R.drawable.green_border);
+                email_editText.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.tick,0);
                 emailPassed = true;
             }
 
-            // If you came back to change the email will check to see if it is available and a valid email address
+            // If you come back to change the email will check to see if it is available and a valid email address
             if(hasFocus && email_editText.getText().toString().length()!=0){
                 email_editText.addTextChangedListener(new TextWatcher() {
                     @Override
@@ -103,15 +109,21 @@ public class SignUp extends AppCompatActivity {
                         if(!isValidEmail(email_editText.getText().toString())){
                             emailError_textView.setText(R.string.notEmail_error);
                             emailError_textView.setVisibility(View.VISIBLE);
+                            email_editText.setBackgroundResource(R.drawable.red_border_et);
+                            email_editText.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,0,0);
                             nextButton.setEnabled(false);
                             emailPassed = false;
                         }else if(!db.checkemail(email_editText.getText().toString())){
                             emailError_textView.setText(R.string.Email_error_string);
                             emailError_textView.setVisibility(View.VISIBLE);
+                            email_editText.setBackgroundResource(R.drawable.red_border_et);
+                            email_editText.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,0,0);
                             nextButton.setEnabled(false);
                             emailPassed = false;
                         }else if(email_editText.getText().length() != 0 && db.checkemail(email_editText.getText().toString()) && isValidEmail(email_editText.getText().toString())){
                             emailError_textView.setVisibility(View.GONE);
+                            email_editText.setBackgroundResource(R.drawable.green_border);
+                            email_editText.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.tick,0);
                             emailPassed = true;
                             if(passwordPassed) nextButton.setEnabled(true);
                         }
@@ -124,11 +136,15 @@ public class SignUp extends AppCompatActivity {
         passw_editText.setOnFocusChangeListener((v, hasFocus) -> {
             if(!hasFocus && !passwordCheck(passw_editText.getText().toString())){
                 passwordError_textView.setText(R.string.password_invalid_error);
+                passw_editText.setBackgroundResource(R.drawable.red_border_et);
+                passw_editText.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,0,0);
                 passwordError_textView.setVisibility(View.VISIBLE);
                 nextButton.setEnabled(false);
                 passwordPassed = false;
             }else if(!hasFocus && passwordCheck(passw_editText.getText().toString())){
                 passwordError_textView.setVisibility(View.GONE);
+                passw_editText.setBackgroundResource(R.drawable.green_border);
+                passw_editText.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.tick,0);
                 passwordPassed = true;
             }
 
@@ -150,15 +166,21 @@ public class SignUp extends AppCompatActivity {
                         if (!passwordCheck(s)) {
                             passwordError_textView.setText(R.string.password_invalid_error);
                             passwordError_textView.setVisibility(View.VISIBLE);
+                            passw_editText.setBackgroundResource(R.drawable.red_border_et);
+                            passw_editText.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,0,0);
                             nextButton.setEnabled(false);
                             passwordPassed = false;
                         } else if (!s.toString().equals(passwCheck_editText.getText().toString()) ) {
                             passwordError_textView.setText(R.string.password_match_error);
                             passwordError_textView.setVisibility(View.VISIBLE);
+                            passw_editText.setBackgroundResource(R.drawable.red_border_et);
+                            passw_editText.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,0,0);
                             nextButton.setEnabled(false);
                             passwordPassed = false;
                         } else if (passwordCheck(s) && s.toString().equals(passwCheck_editText.getText().toString())) {
                             passwordError_textView.setVisibility(View.GONE);
+                            passw_editText.setBackgroundResource(R.drawable.green_border);
+                            passw_editText.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.tick,0);
                             passwordPassed = true;
                             if (emailPassed) nextButton.setEnabled(true);
                         }
@@ -184,16 +206,22 @@ public class SignUp extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 if(s.toString().equals(passw_editText.getText().toString()) && emailPassed && passwordPassed){
                     nextButton.setEnabled(true);
+                    passwCheck_editText.setBackgroundResource(R.drawable.green_border);
+                    passwCheck_editText.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.tick,0);
+
                 }else{
                     nextButton.setEnabled(false);
+                    passwCheck_editText.setBackgroundResource(R.drawable.red_border_et);
+                    passwCheck_editText.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,0,0);
                 }
             }
         });
 
         // register user in database
-        nextButton.setOnClickListener(v ->
-                db.insert(email_editText.getText().toString(), passw_editText.getText().toString()));
-
+        nextButton.setOnClickListener(v -> {
+            db.insert(email_editText.getText().toString(), passw_editText.getText().toString());
+            Toast.makeText(getBaseContext(), "You registered successfully!", Toast.LENGTH_SHORT).show();
+        });
     }
 
     public void openFirstActivity() {
